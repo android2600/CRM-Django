@@ -1,13 +1,13 @@
 {
     "builds": [{
-        "src": "CRM-Django/wsgi.py",
+        "src": "djcrm/wsgi.py",
         "use": "@vercel/python",
         "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
     }],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "CRM-Django/wsgi.py"
+            "dest": "djcrm/wsgi.py"
         }
     ]
 }
