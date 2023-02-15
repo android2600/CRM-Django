@@ -11,7 +11,7 @@ READ_DOT_ENV_FILE= env.bool("READ_DOT_ENV_FILE",default=False)
 if READ_DOT_ENV_FILE:
     environ.Env.read_env()
 # False if not in os.environ because of casting above
-DEBUG = env('DEBUG')
+DEBUG = True
 
 # Raises Django's ImproperlyConfigured
 # exception if SECRET_KEY not in os.environ
@@ -81,12 +81,8 @@ WSGI_APPLICATION = "djcrm.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": env("DB_NAME"),
-        "USER": env("DB_USER"),
-        "PASSWORD": env("DB_PASSWORD"),
-        "HOST": env("DB_HOST"),
-        "PORT": env("DB_PORT")
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / 'db.sqlite3',
     }
 }
 
