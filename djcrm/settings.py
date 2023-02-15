@@ -1,21 +1,21 @@
 from pathlib import Path
-import environ
-import os
+# import environ
+# import os
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
+# env = environ.Env(
+#     # set casting, default value
+#     DEBUG=(bool, False)
+# )
 
-READ_DOT_ENV_FILE= env.bool("READ_DOT_ENV_FILE",default=False)
-if READ_DOT_ENV_FILE:
-    environ.Env.read_env()
-# False if not in os.environ because of casting above
+# READ_DOT_ENV_FILE= env.bool("READ_DOT_ENV_FILE",default=False)
+# if READ_DOT_ENV_FILE:
+#     environ.Env.read_env()
+# # False if not in os.environ because of casting above
 DEBUG = True
 
 # Raises Django's ImproperlyConfigured
 # exception if SECRET_KEY not in os.environ
-SECRET_KEY=env('SECRET_KEY')
+SECRET_KEY="django-insecure-+xc=4h4-=nkl6t(=4j@a04wi3e4qqt7k+h$sd4%^4nt4j(2pqm" #env('SECRET_KEY')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
