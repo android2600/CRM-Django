@@ -1,20 +1,9 @@
 from pathlib import Path
 # import environ
-# import os
+import os
 
-# env = environ.Env(
-#     # set casting, default value
-#     DEBUG=(bool, False)
-# )
-
-# READ_DOT_ENV_FILE= env.bool("READ_DOT_ENV_FILE",default=False)
-# if READ_DOT_ENV_FILE:
-#     environ.Env.read_env()
-# # False if not in os.environ because of casting above
 DEBUG = True
 
-# Raises Django's ImproperlyConfigured
-# exception if SECRET_KEY not in os.environ
 SECRET_KEY="django-insecure-+xc=4h4-=nkl6t(=4j@a04wi3e4qqt7k+h$sd4%^4nt4j(2pqm" #env('SECRET_KEY')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ['.vercel.app','127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app','127.0.0.1','.now.sh']
 
 
 # Application definition
@@ -122,9 +111,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-STATICFILES_DIRS=[BASE_DIR/"static/"] # For static files
-STATIC_ROOT="static_root" #For static Files
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_DIRS=os.path.join(BASE_DIR,"static/") # For static files
+STATIC_ROOT= os.path.join(BASE_DIR,"staticfiles_build","static")  #For static Files
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
